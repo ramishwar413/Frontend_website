@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="QuantumFunded is the premier futures prop trading firm for beginner and experienced traders alike." />
+    <meta name="keywords" content="trading, futures, prop firm, crypto, trading firm" />
+    <meta name="author" content="QuantumFunded" />
+    <title>QuantumFunded | The Premier Futures Prop Firm</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="icon" href="/images/mffu/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/mffu/apple-touch-icon.png" sizes="180x180" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #0b0d13;
+            color: white;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .logo{
+            width:200px;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Card Hover Effect */
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+        }
+
+        .login-button {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            background: linear-gradient(to right, #3b82f6, #facc15);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .desktop-menu {
+                display: none;
+            }
+        }
+
+        .tabs {
+            @apply flex border-b border-gray-200;
+        }
+
+        .tab-button {
+            @apply font-medium text-lg cursor-pointer transition-all duration-400 ease-in-out;
+        }
+
+        .tab-button.active {
+            @apply text-blue-600 border-b-2 border-blue-600;
+            animation: deepenColor 0.5s ease-in-out;
+        }
+
+        .tab-button:not(.active) {
+            @apply text-gray-300 border-b-0;
+        }
+
+        .tab-content {
+            @apply mt-4;
+        }
+
+        .tab-content.hidden {
+            @apply hidden;
+        }
+
+        .tab-content.active {
+            @apply block;
+        }
+
+        /* Account Size Selection */
+        .account-size {
+            @apply cursor-pointer p-3 rounded-lg transition-all duration-400 ease-in-out hover:bg-gray-700 hover:scale-103;
+        }
+
+        .account-size.selected {
+            @apply bg-blue-500 text-white;
+        }
+
+        /* Smooth Round-Edged Selection Animation for Account Size */
+        .account-size.selected {
+            animation: selectPulse 0.6s ease-in-out;
+        }
+
+        @keyframes selectPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+            }
+
+            50% {
+                transform: scale(1.04);
+                box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.1);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        /* Lighter Smooth Hover Animation for Account Size */
+        .account-size:hover {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Dot Flash Animation (only for selected item) */
+        @keyframes flash {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .dot {
+            @apply w-4 h-4 mr-3 rounded-full;
+        }
+
+        .dot.selected {
+            @apply bg-blue-500;
+            animation: flash 1.8s ease-in-out infinite;
+        }
+
+        .dot.unselected {
+            @apply bg-transparent;
+        }
+
+        /* Button Arrow Styling */
+        .get-funded-btn {
+            @apply flex items-center justify-center gap-3;
+        }
+
+        /* Smooth Tab Button Animation */
+        @keyframes deepenColor {
+            0% {
+                color: #3b82f6;
+            }
+
+            50% {
+                color: #2563eb;
+            }
+
+            100% {
+                color: #1d4ed8;
+            }
+        }
+
+        /* FAQ Item Styling */
+        .faq-item {
+            transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            border-color: #3b82f6;
+        }
+
+        /* Scrolling and Transition Effects */
+        section {
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section.invisible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        main {
+            margin-bottom: 64px;
+            /* Adjust based on footer height */
+        }
+
+        /* Enhanced Card and Section Styling */
+        .card,
+        .shadow-lg {
+            border-radius: 1rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Professional Typography and Spacing */
+        h1,
+        h2,
+        h3,
+        h4 {
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1320px;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* Gradient Background for Buttons and Elements */
+        .bg-gradient-to-r {
+            background-size: 200% auto;
+            transition: background-position 0.5s ease-in-out;
+        }
+
+        .bg-gradient-to-r:hover {
+            background-position: right center;
+        }
+
+        /* Candlestick Animation Enhancement */
+        .candlestick {
+            animation: floatUp 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <!-- Header -->
+    <header id="header"
+        class="fixed top-0 left-0 w-full bg-gradient-to-r from-[#0a0f29] to[#020517] shadow-lg z-50 px-2  -mt-3 flex justify-between items-center transition-all duration-300 ease-in-out">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="assets/qfwhite.png" alt="Logo" style="width: 120px; height:120px;"/>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+            <a href="#"
+                class="text-white text-lg font-medium hover:text-blue-400 transition-all duration-300 ease-in-out">Home</a>
+            <a href="#about"
+                class="text-white text-lg font-medium hover:text-blue-400 transition-all duration-300 ease-in-out">About
+                Us</a>
+            <a href="#support"
+                class="text-white text-lg font-medium hover:text-blue-400 transition-all duration-300 ease-in-out">Support</a>
+            <a href="#faq"
+                class="text-white text-lg font-medium hover:text-blue-400 transition-all duration-300 ease-in-out">FAQ</a>
+        </nav>
+
+        <!-- Login Button (Desktop) - Updated with Gradient Hover -->
+        <a href="#login"
+            class="hidden md:inline-block px-6 py-1 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-blue-500 to-yellow-400 hover:from-blue-600 hover:to-yellow-600 login-button transition-all duration-300 ease-in-out shadow-md hover:shadow-lg">
+            Login
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button"
+            class="text-white focus:outline-none md:hidden relative z-50 transition-transform duration-300 ease-in-out hover:scale-105">
+            <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+            <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu (No Overlapping & Close Button Fixed) -->
+    <div id="mobile-menu-dropdown"
+        class="fixed inset-0 bg-gray-900 bg-opacity-95 flex flex-col items-center justify-center space-y-8 transform translate-x-full transition-all duration-500 ease-in-out md:hidden z-40">
+        <a href="#"
+            class="text-white text-2xl font-medium hover:text-yellow-400 transition-all duration-300 ease-in-out">Home</a>
+        <a href="#about"
+            class="text-white text-2xl font-medium hover:text-yellow-400 transition-all duration-300 ease-in-out">About</a>
+        <a href="#support"
+            class="text-white text-2xl font-medium hover:text-yellow-400 transition-all duration-300 ease-in-out">Support</a>
+        <a href="#faq"
+            class="text-white text-2xl font-medium hover:text-yellow-400 transition-all duration-300 ease-in-out">FAQ</a>
+        <a href="#login"
+            class="px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-blue-500 to-yellow-400 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+            Login
+        </a>
+    </div>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const mobileMenu = document.getElementById("mobile-menu-dropdown");
+        const menuButton = document.getElementById("mobile-menu-button");
+        const menuIcon = document.getElementById("menu-icon");
+        const closeIcon = document.getElementById("close-icon");
+
+        menuButton.addEventListener("click", () => {
+            if (mobileMenu.classList.contains("translate-x-full")) {
+                mobileMenu.classList.remove("translate-x-full");
+                menuIcon.classList.add("hidden");
+                closeIcon.classList.remove("hidden");
+            } else {
+                mobileMenu.classList.add("translate-x-full");
+                menuIcon.classList.remove("hidden");
+                closeIcon.classList.add("hidden");
+            }
+        });
+    </script>
+
+    <main class="mt-32 md:mt-36">
+        <section
+            class="relative text-center bg-gradient-to-b from-[#0a0f29] to[#020517] text-white py-24 overflow-hidden"
+            data-aos="fade-in" data-aos-duration="1000">
+            <!-- Background Glow Enhancements -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-10 left-1/4 w-48 h-48 bg-blue-600 blur-[150px] opacity-30 animate-pulse"></div>
+                <div class="absolute bottom-10 right-1/3 w-36 h-36 bg-yellow-500 blur-[150px] opacity-30 animate-pulse">
+                </div>
+            </div>
+
+            <div class="relative z-10 container mx-auto px-6 max-w-5xl">
+                <!-- Main Headline -->
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+                    Stop Risking Your Capital,
+                    <span
+                        class="block bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 text-transparent bg-clip-text">
+                        Prove Your Trading Skills
+                    </span>
+                </h1>
+
+                <p class="text-2xl md:text-3xl mt-8 text-gray-400 font-medium">
+                    Access up to
+                    <span class="text-yellow-400 font-semibold">$2M Dollars</span>.
+                </p>
+
+                <!-- Premium CTA Button -->
+                <a href="#"
+                    class="relative mt-12 inline-block px-12 py-4 text-xl font-semibold text-white rounded-full bg-gradient-to-r from-blue-500 to-yellow-400 shadow-xl transition-all duration-500 ease-in-out hover:scale-110 hover:shadow-2xl hover:from-blue-600 hover:to-yellow-600 get-funded-btn">
+                    Get Funded →
+                </a>
+            </div>
+
+            <!-- 🔥 Hexagon Grid with Floating Candlesticks -->
+            <div
+                class="absolute bottom-0 left-0 w-full h-48 bg-[url('/images/hex-grid.png')] bg-cover opacity-15 mask-wave">
+            </div>
+
+            <div class="absolute bottom-0 left-0 w-full h-56 flex justify-center space-x-8">
+
+                <div
+                    class="candlestick w-5 h-32 bg-blue-500 rounded-md shadow-md before:absolute before:-top-2 before:w-[2px] before:h-5 before:bg-blue-300">
+                </div>
+                <div
+                    class="candlestick w-5 h-40 bg-yellow-500 rounded-md shadow-md before:absolute before:-top-2 before:w-[2px] before:h-7 before:bg-yellow-300">
+                </div>
+                <div
+                    class="candlestick w-5 h-36 bg-green-500 rounded-md shadow-md before:absolute before:-top-3 before:w-[2px] before:h-6 before:bg-green-300">
+                </div>
+                <div
+                    class="candlestick w-5 h-44 bg-red-500 rounded-md shadow-md before:absolute before:-top-2 before:w-[2px] before:h-9 before:bg-red-300">
+                </div>
+                <div
+                    class="candlestick w-5 h-38 bg-purple-500 rounded-md shadow-md before:absolute before:-top-2 before:w-[2px] before:h-6 before:bg-purple-300">
+                </div>
+            </div>
+        </section>
+
+        <style>
+            /* Curved Hexagon Grid */
+            .mask-wave {
+                mask-image: radial-gradient(circle at bottom,
+                        rgba(0, 0, 0, 1) 60%,
+                        rgba(0, 0, 0, 0) 100%);
+            }
+
+            /* Floating Candlestick Animation */
+            .candlestick {
+                position: absolute;
+                bottom: 0;
+                animation: floatUp 4s infinite ease-in-out;
+            }
+
+            .candlestick:nth-child(1) {
+                left: 20%;
+                animation-duration: 3.5s;
+            }
+
+            .candlestick:nth-child(2) {
+                left: 40%;
+                animation-duration: 4s;
+            }
+
+            .candlestick:nth-child(3) {
+                left: 60%;
+                animation-duration: 4.5s;
+            }
+
+            .candlestick:nth-child(4) {
+                left: 80%;
+                animation-duration: 5s;
+            }
+
+            .candlestick:nth-child(5) {
+                left: 50%;
+                animation-duration: 3.8s;
+            }
+
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0) scale(1);
+                    opacity: 0.8;
+                }
+
+                100% {
+                    transform: translateY(-40px) scale(1.1);
+                    opacity: 1;
+                }
+            }
+
+            /* Pulse Animation for Background Glows */
+            @keyframes pulse {
+
+                0%,
+                100% {
+                    opacity: 0.3;
+                }
+
+                50% {
+                    opacity: 0.6;
+                }
+            }
+
+            .animate-pulse {
+                animation: pulse 3s infinite ease-in-out;
+            }
+
+            /* Smooth Round-Edged Selection Animation for Account Size */
+            @keyframes selectPulse {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+                }
+
+                50% {
+                    transform: scale(1.04);
+                    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.1);
+                }
+
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+                }
+            }
+
+            .account-size.selected {
+                animation: selectPulse 0.6s ease-in-out;
+            }
+
+            /* Lighter Smooth Hover Animation for Account Size */
+            .account-size:hover {
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            }
+
+            /* Dot Flash Animation (only for selected item) */
+            @keyframes flash {
+
+                0%,
+                100% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0.3;
+                }
+            }
+
+            .dot {
+                @apply w-4 h-4 mr-3 rounded-full;
+            }
+
+            .dot.selected {
+                @apply bg-blue-500;
+                animation: flash 1.8s ease-in-out infinite;
+            }
+
+            .dot.unselected {
+                @apply bg-transparent;
+            }
+
+            /* Button Arrow Styling */
+            .get-funded-btn {
+                @apply flex items-center justify-center gap-3;
+            }
+
+            /* Smooth Tab Button Animation */
+            @keyframes deepenColor {
+                0% {
+                    color: #3b82f6;
+                }
+
+                50% {
+                    color: #2563eb;
+                }
+
+                100% {
+                    color: #1d4ed8;
+                }
+            }
+
+            /* FAQ Item Styling */
+            .faq-item {
+                transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            }
+
+            .faq-item:hover {
+                transform: translateY(-2px);
+                border-color: #3b82f6;
+            }
+
+            /* Scrolling and Transition Effects */
+            section {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            }
+
+            section.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            section.invisible {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            footer {
+                position: relative;
+                bottom: 0;
+                width: 100%;
+            }
+
+            main {
+                margin-bottom: 64px;
+                /* Adjust based on footer height */
+            }
+
+            /* Enhanced Card and Section Styling */
+            .card,
+            .shadow-lg,
+            .shadow-md {
+                border-radius: 1rem;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                transition: box-shadow 0.3s ease-in-out;
+            }
+
+            .card:hover,
+            .shadow-lg:hover,
+            .shadow-md:hover {
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            }
+
+            /* Professional Typography and Spacing */
+            h1,
+            h2,
+            h3,
+            h4 {
+                letter-spacing: -0.02em;
+            }
+
+            .container {
+                max-width: 1320px;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            /* Sharp and Professional UI/UX Enhancements */
+            .button-primary {
+                @apply bg-gradient-to-r from-blue-500 to-yellow-400 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out;
+            }
+
+            .button-primary:hover {
+                background-position: right center;
+            }
+
+            .text-highlight {
+                @apply text-yellow-400 font-semibold;
+            }
+
+            .section-title {
+                @apply text-4xl md:text-5xl font-bold mb-8 text-blue-400;
+            }
+
+            .feature-card {
+                @apply p-8 rounded-xl shadow-lg bg-gradient-to-br from-[#0f172a] to-[#111827] border border-blue-500/50 overflow-hidden transition-all duration-300 ease-in-out hover:scale-102;
+            }
+
+            .benefit-card {
+                @apply p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50 transition-all duration-300 ease-in-out hover:scale-102;
+            }
+        </style>
+
+        <!-- Features Section (Boxed & Fitting) -->
+        
+        <section class="bg-[#0a0f29] text-white py-10 -mb-20" data-aos="fade-in">
+            <div class="max-w-6xl mx-auto px-4 md:px-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">
+                    Why Should You <span class="text-blue-500">Trade With Us?</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                    <!-- Feature Card 1 -->
+                    <div class="relative p-3 rounded-lg shadow-md bg-gradient-to-br from-[#0f172a] to-[#111827] border border-blue-500/50 overflow-hidden text-center">
+                        <div class="absolute inset-0 bg-[url('images/profit-split-bg.png')] bg-cover bg-center opacity-20"></div>
+                        <h4 class="relative text-lg md:text-xl font-semibold text-blue-400 mb-1">
+                            💰 80/20 Profit Split
+                        </h4>
+                        <img class="w-22 mx-auto mb-2" src="./assets/8020split.webp" alt="Profit Split">
+                        <p class="relative text-sm md:text-base text-gray-300">
+                            No max or min evaluation days. Unlock the power of trading with an 80/20 profit split, ensuring you receive the majority of your earnings while we take only a small portion.
+                            Keep 80% of your profits.
+                        </p>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div class="relative p-3 rounded-lg shadow-md bg-gradient-to-br from-[#0f172a] to-[#111827] border border-blue-500/50 overflow-hidden text-center">
+                        <div class="absolute inset-0 bg-[url('images/fast-payments-bg.png')] bg-cover bg-center opacity-20"></div>
+                        <h4 class="relative text-lg md:text-xl font-semibold text-blue-400 mb-1">
+                            ⚡ Fast Payments
+                        </h4>
+                        <img class="w-22 mx-auto mb-2" src="./assets/fast-paymet.webp" alt="Fast Payments">
+                        <p class="relative text-sm md:text-base text-gray-300">
+                            Enjoy bi-weekly payouts with fast and secure transactions, ensuring you receive your earnings on time, every time.
+                            No more long waiting times. Your profits, your way!
+                        </p>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div class="relative p-3 rounded-lg shadow-md bg-gradient-to-br from-[#0f172a] to-[#111827] border border-blue-500/50 overflow-hidden text-center">
+                        <div class="absolute inset-0 bg-[url('images/crypto-trading-bg.png')] bg-cover bg-center opacity-20"></div>
+                        <h4 class="relative text-lg md:text-xl font-semibold text-blue-400 mb-1">
+                            📈 Crypto Trading
+                        </h4>
+                        <img class="w-22 mx-auto mb-2" src="./assets/crypto-trading.webp" alt="Crypto Trading">
+                        <p class="relative text-sm md:text-base text-gray-300">
+                            The crypto market never sleeps! Trade crypto futures 24/7 with unrestricted access and maximize your trading potential.
+                            Stay ahead with real-time data, execute trades instantly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Benefits Section -->
+        <section class="py-20 -mb-14 bg-[#0a0f29] text-white" data-aos="fade-in">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    Benefits of <span class="text-blue-500">Trading With Us</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Benefit Card 1 -->
+                    <div
+                        class="p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50">
+                        <h4 class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">
+                            No max or min
+                            <span class="text-yellow-400">evaluation days</span>
+                        </h4>
+                        <p class="text-base md:text-lg text-gray-300">
+                            Trade at your own pace without any restrictions.
+                        </p>
+                    </div>
+                    <!-- Benefit Card 2 -->
+                    <div
+                        class="p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50">
+                        <h4 class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">
+                            Get paid in a flash,
+                            <span class="text-yellow-400">every bi-week</span>
+                        </h4>
+                        <p class="text-base md:text-lg text-gray-300">
+                            Receive your earnings quickly and efficiently.
+                        </p>
+                    </div>
+                    <!-- Benefit Card 3 -->
+                    <div
+                        class="p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50">
+                        <h4 class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">
+                            Trade crypto <span class="text-yellow-400">futures 24/7</span>
+                        </h4>
+                        <p class="text-base md:text-lg text-gray-300">
+                            Take advantage of the crypto market around the clock.
+                        </p>
+                    </div>
+                    <!-- Benefit Card 4 -->
+                    <div
+                        class="p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50">
+                        <h4 class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">
+                            90/10 profit split after
+                            <span class="text-yellow-400">90 days of consistency</span>
+                        </h4>
+                        <p class="text-base md:text-lg text-gray-300">
+                            Enjoy a higher profit split as you prove your consistency.
+                        </p>
+                    </div>
+                    <!-- Benefit Card 5 -->
+                    <div
+                        class="p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50">
+                        <h4 class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">
+                            Withdraw once in every
+                            <span class="text-yellow-400">bi-weekly cycle</span>
+                        </h4>
+                        <p class="text-base md:text-lg text-gray-300">
+                            Easily withdraw your earnings on a regular basis.
+                        </p>
+                    </div>
+                    <!-- Benefit Card 6 -->
+                    <div class="p-6 rounded-xl shadow-lg bg-gradient-to-b from-[#1e293b] to-[#0f172a] border border-blue-500/50">
+                        <h4 class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">
+                            Low trading fees for
+                            <span class="text-yellow-400">higher profitability</span>
+                        </h4>
+                        <p class="text-base md:text-lg text-gray-300">
+                            Maximize your profits with our competitive low-fee structure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funding Steps Section -->
+        <section class="py-30 -mb-12 bg-gray-900 text-white" data-aos="fade-in">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-5">
+                    Become A <span class="text-blue-500">Funded Trader</span>
+                </h2>
+                <div class="relative flex flex-col">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                        <div class="relative bg-gray-800 rounded-lg shadow-lg text-left">
+                            <div>
+                                <h3 class="text-lg md:text-xl text-center font-semibold p-2 text-yellow-400">
+                                    💰 STEP-1
+                                </h3>
+                            </div>
+                                <h4 class="text-lg md:text-xl font-semibold mt-2 ">
+                                    Choose account: Rookie or Prime
+                                </h4>
+                            <div class="flex justify-betwen">
+                                <ul>
+                                    <li class="text-yellow-500">
+                                        Select the account types.
+                                    </li>
+                                    <li>
+                                        <span class="text-indigo-500 md:text-blue-500 ">Rookie Account – </span>Ideal for beginners looking to explore trading with lower risks. Get access to basic trading tools, tutorials, and a user-friendly interface.
+                                    </li>
+                                    <li>
+                                        <span class="text-indigo-500 md:text-blue-500 ">Prime Account – </span>Designed for experienced traders who require advanced tools, lower spreads, and premium market insights to maximize their trading potential.
+                                        Choose wisely and trade with confidence!
+                                    </li>
+                                </ul>
+                                <img class="w-1/2 rounded-500" src="./assets/1st step.webp">
+                            </div>
+                        </div>
+                        <div class="relative bg-gray-800 rounded-lg shadow-lg text-left">
+                            <div>
+                                <h3 class="text-lg md:text-xl text-center font-semibold p-2 text-yellow-400">
+                                    💰 STEP-2
+                                </h3>
+                            </div>
+                                <h4 class="text-lg md:text-xl font-semibold mt-2 ">
+                                    Complete the evaluation
+                                </h4>
+                            <div class="flex justify-betwen">
+                                <ul>
+                                    <li class="text-yellow-500">
+                                        Pass the evaluation to prove your trading skills.
+                                    </li>
+                                    <li>
+                                        Welcome to the trading skills evaluation! This test is designed to assess your ability to analyze market trends, manage risk, and execute trades effectively. Successfully passing this evaluation will demonstrate your proficiency in trading strategies and market decision-making.
+                                        Ability to interpret charts.
+                                    </li>
+                                    
+                                </ul>
+                                <img class="w-1/2 rounded-500" src="./assets/2nd step.webp">
+                            </div>
+                        </div>
+                        <div class="relative bg-gray-800 rounded-lg shadow-lg text-left">
+                            <div>
+                                <h3 class="text-lg md:text-xl text-center font-semibold p-2 text-yellow-400">
+                                    💰 STEP-3
+                                </h3>
+                            </div>
+                                <h4 class="text-lg md:text-xl font-semibold mt-2 ">
+                                    Get verified within 24 hours
+                                </h4>
+                            <div class="flex justify-betwen">
+                                <ul>
+                                    <li class="text-yellow-500">
+                                        Our team will verify your results quickly.
+                                    </li>
+                                    <li>
+                                        Our team is dedicated to ensuring a quick and smooth verification process. Once you submit your results, we will review them and provide confirmation within 24 hours.
+                                        Provide the necessary details for verification.You’ll receive an email notification once your verification is complete. If you need assistance, feel free to contact our support team.
+                                        Our system.
+                                    </li>
+                                    
+                                </ul>
+                                <img class="w-1/2 rounded-500" src="./assets/3rd step.webp">
+                            </div>
+                        </div>
+                        <div class="relative bg-gray-800 rounded-lg shadow-lg text-left">
+                            <div>
+                                <h3 class="text-lg md:text-xl text-center font-semibold p-2 text-yellow-400">
+                                    💰 STEP-4
+                                </h3>
+                            </div>
+                                <h4 class="text-lg md:text-xl font-semibold mt-2 ">
+                                    Get funded
+                                </h4>
+                            <div class="flex justify-betwen">
+                                <ul>
+                                    <li class="text-yellow-500">
+                                        Start trading with our capital and earn profits.
+                                    </li>
+                                    <li>
+                                        Unlock the opportunity to trade with our capital and maximize your profits. We provide funding to skilled traders who can demonstrate consistency and risk management.
+                                        Show your trading skills and risk management. Keep a share of the profits while we cover the risk. Receive capital to trade in live markets.
+
+                                    </li>
+                                </ul>
+                                <img class="w-1/2 rounded-500" src="./assets/4th step.webp">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="py-20 -mb-9 bg-[#0a0f29] text-white text-center" data-aos="fade-in">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-blue-400">
+                    Account Types and Pricing
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Column: Account Types and Sizes -->
+                    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-400">
+                                Account Types
+                            </h3>
+                            <div class="tabs">
+                                <button class="tab-button active text-blue-600 border-b-2 border-blue-600 pb-2 mr-4"
+                                    data-tab="prime">
+                                    Prime Account
+                                </button>
+                                <button class="tab-button text-gray-300 pb-2 mr-4" data-tab="rookie">
+                                    Rookie Account
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-6 text-blue-400">
+                            Account Size
+                        </h3>
+                        <ul class="space-y-4" id="account-sizes">
+                            <li class="account-size flex items-center cursor-pointer" data-size="10000">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-white">$10,000</span>
+                            </li>
+                            <li class="account-size flex items-center cursor-pointer" data-size="25000"
+                                data-type="prime">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-gray-300">$25,000</span>
+                            </li>
+                            <li class="account-size flex items-center cursor-pointer" data-size="50000">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-gray-300">$50,000</span>
+                            </li>
+                            <li class="account-size flex items-center cursor-pointer" data-size="100000"
+                                data-type="rookie ">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-gray-300">$100,000</span>
+                            </li>
+                            <li class="account-size flex items-center cursor-pointer" data-size="100000"
+                                data-type="rookie ">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-gray-300">$150,000</span>
+                            </li>
+                            <li class="account-size flex items-center cursor-pointer" data-size="100000"
+                                data-type="rookie ">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-gray-300">$200,000</span>
+                            </li>
+                            <li class="account-size flex items-center cursor-pointer" data-size="100000"
+                                data-type="rookie ">
+                                <span class="dot unselected w-4 h-4 mr-2 rounded-full"></span>
+                                <span class="text-lg font-medium text-gray-300">$250,000</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Column: Selected Account Details -->
+                    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold text-blue-400" id="selected-account-size">
+                                Account Size: $10,000
+                            </h3>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-400">Rules</h3>
+                            <div class="tab-content active" id="prime-rules">
+                                <ul class="text-left space-y-3 text-gray-300">
+                                    <li><strong>Profit Target:</strong> <span class="text-blue-400 md:text-yellow-500">7%</span></li>
+                                    <li><strong>Overall Drawdown Limit:</strong> <span class="text-blue-400 md:text-yellow-500">3%</span></li>
+                                    <li><strong>Max Drawdown Limit:</strong> <span class="text-blue-400 md:text-yellow-500">5%</span> </li>
+                                    <li><strong>Loss Limit per Trade:</strong> <span class="text-blue-400 md:text-yellow-500">2%</span></li>
+                                    <li><strong>Drawdown Type:</strong> <span class="text-blue-400 md:text-yellow-500">Static</span></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content hidden" id="rookie-rules">
+                                <ul class="text-left space-y-3 text-gray-300">
+                                    <li>
+                                        <strong>Profit Target:</strong>
+                                        <ul class="list-disc pl-5">
+                                            <li><span class="text-blue-400 md:text-yellow-500">Phase 1:4%</span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Overall Drawdown Limit:</strong> <span class="text-blue-400 md:text-yellow-500">8% for all phases</span>
+                                    </li>
+                                    <li><strong>Loss Limit per Trade:</strong> <span class="text-blue-400 md:text-yellow-500">2%</span></li>
+                                    <li><strong>Drawdown Type:</strong> <span class="text-blue-400 md:text-yellow-500">Static</span></li>
+                                    <li><strong>No Daily Drawdown Limit:</strong> <span class="text-blue-400 md:text-yellow-500">Yes</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-400">
+                                Payment Options
+                            </h3>
+                            <div class="tab-content active" id="prime-payment">
+                                <ul class="text-left space-y-3 text-gray-300">
+                                    <li>
+                                        <span class="text-blue-400 md:text-green-500">Payment Options:</span> <span class="text-blue-400 md:text-yellow-500"> One-time Payment (Pay full amount upfront)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content hidden" id="rookie-payment">
+                                <ul class="text-left space-y-3 text-gray-300">
+                                    <li>
+                                        <span class="text-blue-400 md:text-green-500">Payment Options:</span>
+                                        <ul class="list-disc pl-5">
+                                            <li> <span class="text-blue-400 md:text-yellow-500">One-time Payment: Pay full amount upfront</span></li>
+                                            <li>
+                                                <span class="text-blue-400 md:text-yellow-500">
+                                                Split Payment: 60% for Phase 1, remaining 40% for
+                                                Phase 2 (slightly higher cost)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Call to Action -->
+                        <button
+                            class="mt-6 w-full py-3 px-6 rounded-lg text-lg font-semibold bg-gradient-to-r from-blue-500 to-yellow-400 text-white hover:from-blue-600 hover:to-yellow-600 get-funded-btn"
+                            id="get-funded-btn">
+                            Get Funded → ($69)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ready to Dive In Section (Full-Width Boxed with Gradient & Animation) -->
+        <section class="py-14 w-full my-2 flex justify-between bg-gradient-to-r from-gray-900 to-gray-700" data-aos="fade-in"
+            data-aos-duration="1000">
+            <div class="container -mt-10 px-8 md:px-16">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-6 text-left">
+                    <span class="text-blue-500">Ready</span> to Dive In?
+                </h2>
+                <p class="text-xl md:text-2xl opacity-80 mb-2 text-left font-medium">
+                    Sign up, select your desired challenge account, and Get Funded.Get instant access to capital, <span class="text-yellow-500">trade with confidence, and keep your profits. Funding can come from various sources, and startups typically go through multiple funding stages as they develop.
+                    Join now and start your funding journey today! </span> <span class="text-blue-500 md:text-indigo-500">Whether you're a startup seeking venture capital, an entrepreneur looking for angel investors, or a business
+                    aiming for expansion, the right funding can be a game-changer.</span>
+                </p>
+                <a href="#"
+                    class="inline-block bg-gradient-to-r from-blue-500 to-yellow-500 text-white py-4 px-10 rounded-xl text-xl font-semibold transition-all duration-400 ease-in-out hover:from-blue-600 hover:to-yellow-600 shadow-lg hover:shadow-xl get-funded-btn">
+                    Get Funded →
+                </a>
+            </div>
+            <div class="flex justify-end w-full -mt-12 rounded-500">
+                <img src="./assets/fund.jpg">
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-15 -mb-5 bg-[#0a0f29] text-white" data-aos="fade-in" data-aos-duration="1000">
+            <div class="container mx-auto px-6">
+                <div class="bg-gradient-to-br from-[#0f172a] to-[#111827] border border-blue-500/50 p-12 rounded-2xl shadow-lg">
+                    <div class="flex flex-col md:flex-col justify-between pb-10">
+                        <!-- Left-Aligned Heading -->
+                        <h2 class="text-4xl md:text-5xl font-bold text-center md:w-30 mb-9">
+                            All Answers to the Most
+                            <span class="text-blue-500">Popular Questions</span>
+                        </h2>
+                        <!-- Right-Aligned FAQs -->
+                        
+                        <div class="faq-container text-center">
+                            <div class="flex justify-between gap-x-20">
+                                <!-- FAQ Item -->
+                                <div class="faq-item bg-[#111827] w-1/2 p-4 rounded-xl mb-6 border border-gray-300 cursor-pointer hover:border-blue-500 transition-all duration-300 ease-in-out hover:scale-102"
+                                    onclick="toggleFAQ(this)">
+                                    <div class="faq-question flex justify-between text-xl font-semibold text-blue-400">
+                                        <span class="flex-grow">Who can trade here?</span>
+                                        <span class="faq-toggle text-2xl font-bold ml-4">+</span>
+                                    </div>
+                                    <div class="faq-answer mt-4 text-lg text-gray-300 hidden">
+                                        Crypto knows no borders, and neither do we—welcome to the future of trading!
+                                    </div>
+                                </div>
+                        
+                                <!-- FAQ Item -->
+                                <div class="faq-item bg-[#111827] w-1/2 p-4 rounded-xl mb-6 border border-gray-300 cursor-pointer hover:border-blue-500 transition-all duration-300 ease-in-out hover:scale-102"
+                                    onclick="toggleFAQ(this)">
+                                    <div class="faq-question flex justify-between text-xl font-semibold text-blue-400">
+                                        <span class="flex-grow">What is End-of-Day Trailing Drawdown? (EOD)</span>
+                                        <span class="faq-toggle text-2xl font-bold ml-4">+</span>
+                                    </div>
+                                    <div class="faq-answer mt-4 text-lg text-gray-300 hidden">
+                                        Choose between Balanced Static Drawdown and Balanced Trailing Drawdown—your trading, your rules.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="flex justify-between gap-x-20 -mb-12">
+                                <!-- FAQ Item -->
+                                <div class="faq-item bg-[#111827] w-1/2 p-4 rounded-xl mb-6 border border-gray-300 cursor-pointer hover:border-blue-500 transition-all duration-300 ease-in-out hover:scale-102"
+                                    onclick="toggleFAQ(this)">
+                                    <div class="faq-question flex justify-between text-xl font-semibold text-blue-400">
+                                        <span class="flex-grow">Are there any withdrawal restrictions?</span>
+                                        <span class="faq-toggle text-2xl font-bold ml-4">+</span>
+                                    </div>
+                                    <div class="faq-answer mt-4 text-lg text-gray-300 hidden">
+                                        Hit a 0.5% profit on 3 days in a two-week cycle to unlock withdrawals.
+                                    </div>
+                                </div>
+                        
+                                <!-- FAQ Item -->
+                                <div class="faq-item bg-[#111827] w-1/2 p-4 rounded-xl mb-6 border border-gray-300 cursor-pointer hover:border-blue-500 transition-all duration-300 ease-in-out hover:scale-102"
+                                    onclick="toggleFAQ(this)">
+                                    <div class="faq-question flex justify-between text-xl font-semibold text-blue-400">
+                                        <span class="flex-grow">What assets can I trade?</span>
+                                        <span class="faq-toggle text-2xl font-bold ml-4">+</span>
+                                    </div>
+                                    <div class="faq-answer mt-4 text-lg text-gray-300 hidden">
+                                        Trade over 50+ cryptocurrencies in the futures market.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0f29] text-white py-10 border-t border-gray-800" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container mx-auto px-6">
+            <!-- Three Equal Sections -->
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+                <!-- Left Column: Logo -->
+                <div class="w-full md:w-1/3 flex flex-col items-start">
+                    <img src="assets/qfwhite.png" alt="Logo" class="h-50 w-60 -mt-10" />
+                </div>
+    
+                <!-- Middle Column: Navigation Links -->
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <ul class="space-y-2 text-gray-300 text-lg text-center">
+                        <li><a href="#about" class="hover:text-blue-400 transition duration-300">About</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">B2B</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Affiliate</a></li>
+                        <li><a href="#faq" class="hover:text-blue-400 transition duration-300">FAQ</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Challenges</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Right Column: Newsletter Subscription -->
+                <div class="w-full md:w-1/3">
+                    <p class="text-base text-gray-200 mb-3 font-medium">Subscribe to our newsletter</p>
+                    <div class="relative flex items-center bg-gray-800 rounded-xl p-3">
+                        <span class="absolute left-4 text-gray-400 text-2xl">✉</span>
+                        <input type="email" placeholder="Enter your email"
+                            class="w-full bg-transparent text-white placeholder-gray-400 pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-xl text-base" />
+                        <button class="ml-3 bg-gradient-to-r from-blue-500 to-yellow-400 text-white px-6 py-3 rounded-xl text-base font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-400">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Copyright at the Bottom -->
+            <div class="text-center text-base text-yellow-400 mt-8">
+                ©2025 QuantumFunded. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- JavaScript for Account Selection, Tabs, Animations, Scrolling, and Smooth Behavior -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Tab switching for account types (Prime/Rookie) with smooth animation
+            const tabButtons = document.querySelectorAll(".tab-button");
+            const tabContents = document.querySelectorAll(".tab-content");
+            let selectedAccountType = "prime"; // Default to Prime
+
+            tabButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    // Remove active class and styles from all buttons
+                    tabButtons.forEach((btn) => {
+                        btn.classList.remove(
+                            "active",
+                            "text-blue-600",
+                            "border-b-2",
+                            "border-blue-600"
+                        );
+                        btn.classList.add("text-gray-300", "border-b-0");
+                    });
+                    // Hide all tab contents
+                    tabContents.forEach((content) => content.classList.add("hidden"));
+
+                    // Add active class, deepen color, and underline to clicked button with smooth transition
+                    button.classList.add(
+                        "active",
+                        "text-blue-600",
+                        "border-b-2",
+                        "border-blue-600"
+                    );
+                    selectedAccountType = button.getAttribute("data-tab");
+                    document
+                        .getElementById(selectedAccountType + "-rules")
+                        .classList.remove("hidden");
+                    document
+                        .getElementById(selectedAccountType + "-payment")
+                        .classList.remove("hidden");
+
+                    // Trigger smooth deepen color animation
+                    button.style.animation = "deepenColor 0.5s ease-in-out";
+                    setTimeout(() => (button.style.animation = ""), 500); // Reset animation after it completes
+                    updateRightColumn();
+                    updateAccountSizesVisibility();
+                });
+            });
+
+            // Account size selection with smooth animation
+            const accountSizes = document.querySelectorAll(".account-size");
+            let selectedSize = 10000; // Default to $10,000
+
+            accountSizes.forEach((size) => {
+                size.addEventListener("click", () => {
+                    // Check if the selected size is available for the current account type
+                    const accountType = size.getAttribute("data-type") || "both";
+                    if (accountType === "prime" && selectedAccountType !== "prime")
+                        return;
+                    if (accountType === "rookie" && selectedAccountType !== "rookie")
+                        return;
+
+                    accountSizes.forEach((s) => {
+                        s.classList.remove("selected", "bg-blue-500", "text-white");
+                        const dots = s.querySelectorAll(".dot");
+                        dots.forEach((dot) => dot.classList.remove("selected"));
+                        dots.forEach((dot) => dot.classList.add("unselected"));
+                    });
+                    size.classList.add("selected", "bg-blue-500", "text-white");
+                    const dot = size.querySelector(".dot");
+                    dot.classList.remove("unselected");
+                    dot.classList.add("selected");
+                    selectedSize = parseInt(size.getAttribute("data-size"));
+                    updateRightColumn();
+                });
+            });
+
+            // Function to update right column based on selections
+            function updateRightColumn() {
+                const sizeDisplay = document.getElementById("selected-account-size");
+                const getFundedBtn = document.getElementById("get-funded-btn");
+                const pricing = {
+                    10000: { prime: "$69", rookie: "$62" },
+                    25000: { prime: "$119", rookie: null }, // Only for Prime
+                    50000: { prime: "$159", rookie: "$242" },
+                    100000: { prime: null, rookie: "$422" }, // Only for Rookie
+                };
+
+                sizeDisplay.textContent = `Account Size: $${selectedSize.toLocaleString()}`;
+                const price = pricing[selectedSize][selectedAccountType];
+                if (price) {
+                    getFundedBtn.textContent = `Get Funded → (${price})`;
+                } else {
+                    getFundedBtn.textContent = `Get Funded → (N/A)`;
+                }
+
+                // Show/hide rules and payment options based on account type
+                document
+                    .getElementById("prime-rules")
+                    .classList.toggle("hidden", selectedAccountType !== "prime");
+                document
+                    .getElementById("rookie-rules")
+                    .classList.toggle("hidden", selectedAccountType !== "rookie");
+                document
+                    .getElementById("prime-payment")
+                    .classList.toggle("hidden", selectedAccountType !== "prime");
+                document
+                    .getElementById("rookie-payment")
+                    .classList.toggle("hidden", selectedAccountType !== "rookie");
+            }
+
+            // Function to update visibility of account sizes based on account type
+            function updateAccountSizesVisibility() {
+                const accountSizes = document.querySelectorAll(".account-size");
+                accountSizes.forEach((size) => {
+                    const accountType = size.getAttribute("data-type") || "both";
+                    if (selectedAccountType === "prime" && accountType === "rookie") {
+                        size.style.display = "none";
+                    } else if (
+                        selectedAccountType === "rookie" &&
+                        accountType === "prime"
+                    ) {
+                        size.style.display = "none";
+                    } else {
+                        size.style.display = "flex";
+                    }
+                });
+
+                // Ensure a visible size is selected (default to first available)
+                if (!document.querySelector(".account-size.selected")) {
+                    const firstVisibleSize = document.querySelector(
+                        '.account-size[style*="display: flex"]'
+                    );
+                    if (firstVisibleSize) {
+                        firstVisibleSize.classList.add(
+                            "selected",
+                            "bg-blue-500",
+                            "text-white"
+                        );
+                        const dot = firstVisibleSize.querySelector(".dot");
+                        dot.classList.remove("unselected");
+                        dot.classList.add("selected");
+                        selectedSize = parseInt(
+                            firstVisibleSize.getAttribute("data-size")
+                        );
+                        updateRightColumn();
+                    }
+                }
+            }
+
+            // Initialize with default values
+            updateAccountSizesVisibility();
+            updateRightColumn();
+
+            // Smooth Scrolling for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                });
+            });
+
+            // Enhanced Scrolling Animation for Sections
+            const sections = document.querySelectorAll("section");
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        entry.target.classList.remove("invisible");
+                    } else {
+                        entry.target.classList.add("invisible");
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach((section) => observer.observe(section));
+        });
+
+        function toggleFAQ(element) {
+            let answer = element.querySelector(".faq-answer");
+            let toggle = element.querySelector(".faq-toggle");
+
+            if (answer.classList.contains("hidden")) {
+                answer.classList.remove("hidden");
+                toggle.textContent = "-";
+                element.classList.add("open");
+            } else {
+                answer.classList.add("hidden");
+                toggle.textContent = "+";
+                element.classList.remove("open");
+            }
+        }
+    </script>
+
+    <!-- AOS Library Script -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: false,
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
